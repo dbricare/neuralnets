@@ -6,3 +6,6 @@
 *.jpg
 *.png
 *.jpeg
+
+# mac files
+.DS_Store

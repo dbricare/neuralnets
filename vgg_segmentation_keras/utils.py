@@ -74,8 +74,8 @@ def fcn32_blank(image_size=512):
         extra_margin = deconv_output_size - convsize*2 # INFO: =2 when images are 512x512
         assert (extra_margin > 0)
         assert (extra_margin % 2 == 0)
-        mdl.add( Cropping2D(cropping=((extra_margin/2, extra_margin/2),
-                                      (extra_margin/2, extra_margin/2))) ) # INFO : cropping as deconv gained pixels
+        mdl.add( Cropping2D(cropping=((extra_margin//2, extra_margin//2),
+                                      (extra_margin//2, extra_margin//2))) ) # INFO : cropping as deconv gained pixels
         
         return mdl
     
@@ -130,8 +130,8 @@ def fcn_32s_to_16s(fcn32model=None):
     extra_margin = deconv_output_size - fcn32size*16 # INFO: =16 when images are 512x512
     assert (extra_margin > 0)
     assert (extra_margin % 2 == 0)
-    crop_margin = Cropping2D(cropping=((extra_margin/2, extra_margin/2),
-                                       (extra_margin/2, extra_margin/2))) # INFO : cropping as deconv gained pixels
+    crop_margin = Cropping2D(cropping=((extra_margin//2, extra_margin//2),
+                                       (extra_margin//2, extra_margin//2))) # INFO : cropping as deconv gained pixels
 
     return Model(fcn32model.input, crop_margin(upnew(summed)))
 
